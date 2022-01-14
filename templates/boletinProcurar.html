@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block header %}Procurar boletin{% endblock header %}
+{% block content %}
+<section class="container w-50 mb-5">
+    <form method="POST" action="{{url_for('boletin')}}">
+        <div class="form-group">
+            <label for="formGroupExampleInput">Selecione uma turma</label>
+            <div class="input-group mb-3">
+                <select class="custom-select" name="turma" id="inputGroupSelect01">
+                <option selected>Escolher...</option>
+                {% for turma in turmas %}
+                    <option value="{{turma.id}}">{{turma.id}}</option>
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Procurar</button>
+    </form>
+</section>
+{% endblock %}

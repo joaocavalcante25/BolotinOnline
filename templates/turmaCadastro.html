@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block header %}Cadastrar Materia{% endblock header %}
+{% block content %}
+<section class="container w-50 mb-5">
+    {% if cadastro %}
+        {% if cadastro['status'] %}
+        <div class="alert alert-success mb-3 mt-3" role="alert">
+            Turma {{cadastro['id']}} casdastrado com sucesso!
+        </div>
+        {% else %}
+        <div class="alert alert-danger mb-3 mt-3" role="alert">
+            erro ao cadastrar 
+        </div>
+        {% endif %}
+        
+    {% endif %}
+    <form method="POST" action="{{url_for('turmaCadastrar')}}">
+        <div class="form-group">
+        <label for="formGroupExampleInput">Ano</label>
+            <input type="text" name="ano" class="form-control" id="formGroupExampleInput" placeholder="ano">
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</section>
+{% endblock %}

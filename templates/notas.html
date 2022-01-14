@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block header %}Boletis{% endblock %}
+{% block content %}
+    
+    <section class="container w-50 mt-5">
+        
+        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Semestre</label>
+        <select class="custom-select my-1 mr-sm-2" name="semestre"id="inlineFormCustomSelectPref" required>
+            <option selected>Escolher...</option>
+            <option value="1">1 Semestre</option>
+            <option value="2">2 Semestre</option>
+            <option value="3">3 Semestre</option>
+        </select>
+        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Materia</label>
+        <select class="custom-select my-1 mr-sm-2" materia="" id="inlineFormCustomSelectPref" required>
+            <option selected>Escolher...</option>
+            <option value="1">1 Semestre</option>
+            {% for materia in materias %}
+                <option value="{{materia.cod_materia}}">{{materia.nome}}</option>  
+            {% endfor %}
+        </select>
+        
+        
+        
+    </section>
+    <section class="container  w-50 p-3 mt-3 ">
+        
+        <table class="table table-dark">
+           
+            <thead>
+              <tr>
+                <th scope="col">nome</th>
+                <th scope="col">cpf</th>
+                <th scope="col">Nota da prova</th>
+                <th scope="col">Nota do Trabalho</th>
+                <th scope="col">salvar</th>
+                
+                
+              </tr>
+            </thead>
+            
+            <tbody>
+                {% for aluno in alunos %}
+                <tr>
+                   
+                    <td>{{aluno.nome}}</td>
+                    <td>{{aluno.cpf}}</td>
+                    <td><input type="text" class="form-control mb-2" id="inlineFormInput" value="0" placeholder="Fulano"></td>
+                    <td><input type="text" class="form-control mb-2" id="inlineFormInput" value="0" placeholder="Fulano"></td>
+                    <td><button type="submit" class="btn btn-primary mb-2">Salvar</button></td>
+                    
+                    
+                </tr>
+                {% endfor %}
+              
+            </tbody>
+            
+          </table>
+        
+    </section>
+    <script type="text/javascript">
+        function seth(href){
+            document.location = href;
+        }
+    </script>
+{% endblock %}

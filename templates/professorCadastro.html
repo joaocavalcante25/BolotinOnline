@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block header %}Cadastrar Professor{% endblock header %}
+{% block content %}
+<section class="container w-50 mb-5">
+    {% if cadastro %}
+        {% if cadastro['status'] %}
+        <div class="alert alert-success mb-3 mt-3" role="alert">
+            Professor {{cadastro['nome']}} casdastrado com sucesso!
+        </div>
+        {% else %}
+        <div class="alert alert-danger mb-3 mt-3" role="alert">
+            erro ao cadastrar 
+        </div>
+        {% endif %}
+        
+    {% endif %}
+    <form method="POST" action="{{url_for('professorCadastrar')}}" >
+        <div class="form-group">
+        <label for="formGroupExampleInput">Nome completo</label>
+        <input type="text" name="nome_completo" class="form-control" id="formGroupExampleInput" placeholder="nome">
+        </div>
+        
+        <div class="form-group">
+        <label for="formGroupExampleInput">Formação</label>
+        <input type="text" name="formacao" class="form-control" id="formGroupExampleInput" placeholder="nome">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Area de atuação</label>
+            <div class="input-group mb-3">
+                <select class="custom-select" name="area_atuac" id="inputGroupSelect01">
+                <option selected >Escolher...</option>
+                {% for materia in materias %}
+                <option value="{{materia.cod_materia}}">{{materia.nome}}</option>
+                
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</section>    
+{% endblock %}

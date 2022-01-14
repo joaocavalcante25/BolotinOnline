@@ -1,0 +1,14 @@
+lingragem: python 
+flamework: flask
+
+acesse com o terminal a virtual env
+no terminal navegue até a pasta que esta o projeto
+
+execute:
+.\env\Script\Activate ou 
+sudo \env\Script\Activate
+
+logo após rode o comando
+flask run
+abra a aplicação no navegador:
+ http://127.0.0.1:5000/

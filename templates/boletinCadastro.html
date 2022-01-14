@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block header %}Cadastrar Boletin{% endblock header %}
+{% block content %}
+<section class="container w-50 mb-5">
+    {% if cadastro %}
+        {% if cadastro['status'] %}
+        <div class="alert alert-success mb-3 mt-3" role="alert">
+            Boletin {{cadastro['nome']}} casdastrado com sucesso!
+        </div>
+        {% else %}
+        <div class="alert alert-danger mb-3 mt-3" role="alert">
+            erro ao cadastrar 
+        </div>
+        {% endif %}
+        
+    {% endif %}
+   
+        
+        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Semestre</label>
+        <select class="custom-select my-1 mr-sm-2" name="semestre"id="inlineFormCustomSelectPref" required>
+            <option selected>Escolher...</option>
+            <option value="1">1 Semestre</option>
+            <option value="2">2 Semestre</option>
+            <option value="3">3 Semestre</option>
+        </select>
+        
+            
+            
+        </section>
+
+        <button type="button" onclick="seth('/boletin/cadastrar?cpf={{aluno.cpf}}&turma={{turma.id}}&bimestre=')" class="btn btn-primary">Cadastrar</button>
+    
+    <ul class="list-group">
+        {% for aluno in alunos %}
+        <li class="list-group-item d-flex">{{aluno.nome}}
+            <div class="ml-auto">
+                <button class="btn btn-secondary bg-primary ml-auto" type="button">editar</button>
+                <button class="btn btn-secondary bg-primary ml-auto" type="button">excluir</button>   
+            </div>
+        </li>
+        {% endfor %}
+        
+    </ul>
+    <script type="text/javascript">
+        function seth(href){
+            document.alert(getB())
+            document.location = href+getB();
+        }
+        function getB(){
+            
+            h =  document.getElementByName('semestre')
+            return h.options[h.selectedIndex].text
+           
+        }
+    </script>
+</section>
+{% endblock %}

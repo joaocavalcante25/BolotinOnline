@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+            <a class="navbar-brand" href="/">
+              <img src="https://img.icons8.com/color/48/000000/scroll.png" width="50" height="50" class="d-inline-block align-center" alt="">
+                Boletin virtual
+            </a>
+            <div class="collapse ml-5 navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item  {% if 'alunos' in url_for(request.endpoint) %}active{% endif %}">
+                    <a class="nav-link" href="/alunos">Alunos <span class="sr-only">(Página atual)</span></a>
+                  </li>
+                  <li class="nav-item {% if 'professor' in url_for(request.endpoint)  %}active{% endif %}">
+                    <a class="nav-link" href="/professor">Professores
+                    </a>
+                  </li>
+                  <li class="nav-item {% if  'materia' in url_for(request.endpoint)  %}active{% endif %}">
+                    <a class="nav-link" href="/materias">Materias</a>
+                  </li>
+                  <li class="nav-item {% if 'turma' in url_for(request.endpoint)  %}active{% endif %}">
+                    <a class="nav-link" href="/turmas">Turmas</a>
+                  </li>
+                  <li class="nav-item {% if 'boletin' in url_for(request.endpoint)  %}active{% endif %} dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Boletin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/boletin/procurar">Procurar Boletin</a>
+                      <a class="dropdown-item" href="/boletin/cadastro">Lançar Notas</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+          </nav>
+    </header>
+    <article>
+        <section>
+            <div class="text-center mt-5"><h3>{% block header %}{% endblock %}</h3></div>
+        </section>
+        {% block content %}{% endblock %}
+    </article>
+    
+    
+</html>

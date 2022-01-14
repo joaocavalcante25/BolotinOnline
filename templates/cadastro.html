@@ -1,0 +1,28 @@
+
+
+{% extends 'base.html' %}
+{% block content %}
+    <section class="container text-center mt-3 rounded text-light bg-primary w-25 p-3">
+        <p style="font-size:5vh;">Escolha qual deseja cadastrarr</p>
+    </section>
+
+    <section >
+        <div class="container mt-3" style="width: 27%; height: 30vh;">
+            <ul class="list-group  ">
+                <li class="list-group-item d-flex flex-row aling-items-center"> <p style="font-size:3vh;">Aluno </p> <button type="button" class="btn btn-success ml-auto float-rigt" onclick="seth('aluno')">Cadastrar</button>
+                </li>
+                <li class="list-group-item d-flex flex-row aling-items-center"> <p style="font-size:3vh;">Professor</p> <button type="button" class="btn btn-success ml-auto float-rigt" onclick="seth('professor')">Cadastrar</button>
+                </li>	
+                <li class="list-group-item d-flex flex-row aling-items-center"> <p style="font-size:3vh;">Boletin</p> <button type="button" class="btn btn-success ml-auto float-rigt" onclick="seth('boletin')">Cadastrar</button>
+                </li>
+                <li class="list-group-item d-flex flex-row aling-items-center"> <p style="font-size:3vh;">Turma </p> <button type="button" class="btn btn-success ml-auto float-rigt" onclick="seth('turma')">Cadastrar</button>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <script type="text/javascript">
+        function seth(href){
+            document.location = document.location+"/"+ href;
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block header %}Turmas{% endblock %}
+{% block content %}
+    
+    <section class="container w-50 mt-5">
+        <button class="btn btn-secondary mb-3 " type="button" onclick="seth('turma/cadastrar')">
+            Novo
+        </button>
+        
+    </section>
+    <section class="container  w-50 p-3 mt-3 ">
+        {% if turmas|length > 0 %}
+     
+        
+        <ul class="list-group">
+            {% for turma in turmas %}
+            
+                <li class="list-group-item d-flex">
+                    <p class="ml-4"> {{turma.id}}</p>
+                    <p class="ml-4">{{turma.ano}}</p>
+                    <div class="ml-auto">
+                        <button class="btn btn-secondary bg-primary ml-auto" type="button">editar</button>
+                        <button class="btn btn-secondary bg-primary ml-auto" type="button">excluir</button>   
+                    </div>
+                </li>
+            {% endfor %}
+           
+            
+        </ul>
+        {% else %}
+            <h3 class="text-center">não  há nenhuma Turma</h3>
+        {% endif %}
+    </section>
+    <script type="text/javascript">
+        function seth(href){
+            document.location = href;
+        }
+    </script>
+{% endblock %}

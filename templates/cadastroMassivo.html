@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block header %}Alunos{% endblock %}
+{% block content %}
+    
+    <section class="container w-50 mt-5">
+        <button class="btn btn-secondary mb-3 " type="button" onclick="seth('alunos/cadastrar')">
+            Cadastro de Notas
+        </button>
+        <div class="dropdown">
+            
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% if turmasected %}
+                    {{turmasected.id}}
+                {% else %}
+                    Turma
+                {% endif %}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {% for turma in turmas %}
+                <a class="dropdown-item" href="/alunos?turma={{turma.id}}">{{ turma.id }}</a>
+            {% endfor %} 
+            </div>
+          </div>
+        
+    </section>
+    <section class="container  w-50 p-3 mt-3 ">
+        
+        {% if alunos %}
+     
+        
+        <ul class="list-group">
+            {% for aluno in alunos %}
+            <li class="list-group-item d-flex">{{aluno.nome}}
+                <div class="ml-auto">
+                    <button class="btn btn-secondary bg-primary ml-auto" type="button">editar</button>
+                    <button class="btn btn-secondary bg-primary ml-auto" type="button">excluir</button>   
+                </div>
+            </li>
+            {% endfor %}
+            
+        </ul>
+        {% else %}
+            <h3 class="text-center">Selecione uma turma</h3>
+        {% endif %}
+    </section>
+    <script type="text/javascript">
+        function seth(href){
+            document.location = href;
+        }
+    </script>
+{% endblock %}
